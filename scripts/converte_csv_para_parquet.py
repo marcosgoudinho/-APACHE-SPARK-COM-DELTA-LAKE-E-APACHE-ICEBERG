@@ -7,6 +7,16 @@ def main(caminho_csv: str, caminho_saida: str):
         .appName("Conversor CSV para Parquet") \
         .getOrCreate()
 
+    # Verifica se o arquivo CSV existe
+    if not os.path.exists(caminho_csv):
+        print(f"Erro: O arquivo {caminho_csv} não foi encontrado.")
+        sys.exit(1)
+
+    # Criação da pasta de saída, caso não exista
+    if not os.path.exists(caminho_saida):
+        os.makedirs(caminho_saida)
+        print(f"A pasta de saída {caminho_saida} foi criada.")
+
     # Leitura do CSV
     print(f"Lendo arquivo CSV de: {caminho_csv}")
     df = spark.read \
@@ -22,15 +32,7 @@ def main(caminho_csv: str, caminho_saida: str):
     spark.stop()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Uso: python converte_csv_para_parquet.py <caminho_csv> <caminho_saida_parquet>")
-        sys.exit(1)
-
-    caminho_csv = sys.argv[1]
-    caminho_saida = sys.argv[2]
-
-    if not os.path.exists(caminho_csv):
-        print(f"Erro: O arquivo {caminho_csv} não foi encontrado.")
-        sys.exit(1)
+    caminho_csv = "C:/Users/nicolas.7220/Desktop/teste/-APACHE-SPARK-COM-DELTA-LAKE-E-APACHE-ICEBERG/data/raw/teste.csv"
+    caminho_saida = "C:/Users/nicolas.7220/Desktop/teste/-APACHE-SPARK-COM-DELTA-LAKE-E-APACHE-ICEBERG/data/processed/teste"
 
     main(caminho_csv, caminho_saida)
