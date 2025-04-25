@@ -1,3 +1,8 @@
-# mkdocs.yml
+site_name: Spark Data Lake Project
+theme:
+  name: material
 
-Conteúdo inicial para mkdocs.yml
+nav:
+  - Home: index.md
+  - Delta Lake: delta-lake.md
+  - Apache Iceberg: iceberg.md
