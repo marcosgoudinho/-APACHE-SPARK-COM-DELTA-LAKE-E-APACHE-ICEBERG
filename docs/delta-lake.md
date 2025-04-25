@@ -1,24 +1,30 @@
-# Delta Lake com Apache Spark
+# Delta Lake
 
-Este notebook demonstra o uso do Delta Lake para comandos INSERT, UPDATE e DELETE.
+## O que é o Delta Lake?
 
-## Comando INSERT
+O **Delta Lake** é uma camada de armazenamento de open-source que roda sobre o **Apache Spark**. Ele oferece suporte a **ACID transactions** (Atomicidade, Consistência, Isolamento e Durabilidade), tornando o armazenamento de dados mais confiável e eficiente.
 
-```python
-from delta.tables import DeltaTable
+### Funcionalidades do Delta Lake:
 
-df.write.format("delta").save("/tmp/delta/usuarios")
-```
+- **ACID Transactions**: Garante que todas as operações de leitura e gravação sejam consistentes e seguras.
+- **Schema Evolution**: Suporte para alterações no esquema de dados ao longo do tempo.
+- **Time Travel**: Capacidade de acessar versões anteriores dos dados.
+- **Stream and Batch Processing**: Integração com processos em lote e streaming.
 
-## Comando UPDATE
+## Como Usar Delta Lake
 
-```python
-delta_table = DeltaTable.forPath(spark, "/tmp/delta/usuarios")
-delta_table.update("idade < 18", {"idade": "18"})
-```
+Para usar o Delta Lake em seu projeto Spark, você pode seguir as etapas básicas:
 
-## Comando DELETE
+1. **Importar o Delta Lake**:
+   ```python
+   from delta import DeltaTable
 
-```python
-delta_table.delete("status = 'inativo'")
-```
+2. **Criar uma Tabela Delta:**:
+df.write.format("delta").save("/path/to/delta_table")
+
+3. **Leitura de uma Tabela Delta:**:
+df = spark.read.format("delta").load("/path/to/delta_table")
+
+4. **Gerenciar Atualizações e Versionamento:**:
+deltaTable = DeltaTable.forPath(spark, "/path/to/delta_table")
+deltaTable.update(condition, set)

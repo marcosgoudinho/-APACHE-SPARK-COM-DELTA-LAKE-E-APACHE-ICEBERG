@@ -1,8 +1,16 @@
-site_name: Spark Data Lake Project
-theme:
-  name: material
+site_name: Apache Spark com Delta Lake e Apache Iceberg
+site_url: https://seu-usuario.github.io/projeto-docs/
+theme: material
 
 nav:
   - Home: index.md
-  - Delta Lake: delta-lake.md
-  - Apache Iceberg: iceberg.md
+  - "Introdução ao Apache Spark": introducao-spark.md
+  - "Delta Lake": delta-lake.md
+  - "Apache Iceberg": apache-iceberg.md
+  - "Exemplos de Código": exemplos-codigo.md
+  - "Referência": referencia.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
