@@ -1,3 +1,26 @@
-# pyproject.toml
+[tool.poetry]
+name = "apache-spark-delta-iceberg"
+version = "0.1.0"
+description = "Projeto de Apache Spark com Delta Lake e Apache Iceberg para faculdade"
+authors = ["Nicolas Andrade de Freitas <seu.email@email.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "meu_projeto" }]
 
-Conteúdo inicial para pyproject.toml
+[tool.poetry.dependencies]
+python = "^3.10"
+pyspark = "^3.5.1"
+delta-spark = "^3.1.0"
+pyarrow = "^15.0.0"
+mkdocs = "^1.5.3"
+mkdocs-material = "^9.5.12"
+jupyterlab = "^4.0.11"
+pandas = "^2.2.2"
+
+[tool.poetry.group.dev.dependencies]
+notebook = "^7.0.6"
+ipykernel = "^6.29.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
