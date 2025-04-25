@@ -1,0 +1,3 @@
+# requirements-dev.txt
+
+Conteúdo inicial para requirements-dev.txt
